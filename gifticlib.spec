@@ -18,6 +18,8 @@ BuildRequires:  nifticlib-devel
 GIFTI is an XML-based file format for cortical surface data. This reference
 IO implementation is developed by the Neuroimaging Informatics Technology
 Initiative (NIfTI).
+This package also provides the tools that are shipped with the GIFTI library
+(gifti_tool and gifti_test).
 
 %package        devel
 Summary:        Development files for %{name}
@@ -26,14 +28,6 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
-
-%package        tools
-Summary:        Tools shipped with GIFTI library
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-
-%description    tools
-This package provides the tools that are shipped with the GIFTI library
-(gifti_tool and gifti_test).
 
 %prep
 %autosetup
@@ -66,16 +60,14 @@ install -p -m0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/
 
 %files
 %license LICENSE.gifti
+%{_bindir}/gifti_*
 %{_libdir}/libgifti*.so.*
+%{_mandir}/man1/gifti_*.1.*
 
 %files devel
 %doc README.gifti
 %{_includedir}/gifti/
 %{_libdir}/libgifti*.so
-
-%files tools
-%{_bindir}/gifti_*
-%{_mandir}/man1/gifti_*.1.*
 
 %changelog
 * Sun Nov 08 2015 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 1.0.9-1
