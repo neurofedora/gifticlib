@@ -1,0 +1,70 @@
+.TH GIFTI_TEST "1" "June 2010" "gifti_test" "User Commands"
+.SH NAME
+gifti_test \- test reading/writing a GIFTI dataset
+.SH SYNOPSIS
+.B gifti_test
+[\fI...\fR]
+.SH OPTIONS
+.TP
+\fB\-help\fR
+Show usage help.
+.TP
+\fB\-gifti_hist\fR
+Show giftilib history.
+.TP
+\fB\-gifti_ver\fR
+Show giftilib version.
+.TP
+\fB\-encoding\fR TYPE
+Set the data encoding for any output file.
+.IP
+TYPE = ASCII      : ASCII encoding
+.IP
+TYPE = BASE64     : base64 binary
+.IP
+TYPE = BASE64GZIP : base64 compressed binary
+.TP
+\fB\-gfile\fR OUTPUT
+Write out dataset as gifti image.
+.TP
+\fB\-infile\fR INPUT
+Specify INPUT as the GIFTI dataset to read.
+.TP
+\fB\-no_data\fR
+Do not write out data.
+.TP
+\fB\-show\fR
+Show final gifti image.
+.TP
+\fB\-slist\fR LEN s0...
+Restrict output to list of length LEN.
+.TP
+\fB\-verb\fR VERB
+Set verbose level.
+.SH EXAMPLES
+.TP
+1. read in a GIFTI dataset (verbose, show output?)
+.IP
+gifti_test -infile dset.gii
+.IP
+gifti_test -infile dset.gii -verb 3
+.IP
+gifti_test -infile dset.gii -show
+.TP
+2. copy a GIFTI dataset (check differences?)
+.IP
+gifti_test -infile dset.gii -gfile copy.gii
+.IP
+diff dset.gii copy.gii
+.TP
+3. copy a GIFTI data, but write out only 3 surf indices: 0,4,5
+.IP
+gifti_test -infile time_series.gii -gfile ts3.gii -slist 3 0 4 5
+.SH SEE ALSO
+Website:
+.I http://www.nitrc.org/projects/gifti
+.SH AUTHOR
+Richard Reynolds \- SSCC, DIRP, NIMH, National Institutes of Health
+.PP
+This manual page was written by Michael Hanke <michael.hanke@gmail.com>,
+for the Debian project (but may be used by others).
